@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Guardia - Cuenta Atrás</title>
+    <!-- Google Fonts: Outfit and Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Floating background decorative elements -->
+    <div class="decorations">
+        <!-- Heartbeat background lines -->
+        <div class="ecg-bg">
+            <svg viewBox="0 0 1400 300" class="ecg-svg">
+                <path d="M0,150 L300,150 L320,100 L340,200 L360,130 L380,170 L400,150 L700,150 L720,50 L740,250 L760,120 L780,180 L800,150 L1100,150 L1120,110 L1140,190 L1160,140 L1180,160 L1200,150 L1400,150" />
+            </svg>
+        </div>
+        
+        <!-- Floating medical icons -->
+        <div class="floating-icon icon-1">🩺</div>
+        <div class="floating-icon icon-2">💊</div>
+        <div class="floating-icon icon-3">🩹</div>
+        <div class="floating-icon icon-4">❤️</div>
+        <div class="floating-icon icon-5">☕</div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Settings Gear Button -->
+        <button id="settings-toggle" class="btn-settings" aria-label="Configuración">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+        </button>
+
+        <!-- Configuration Modal/Overlay -->
+        <div id="settings-panel" class="settings-panel hidden">
+            <div class="settings-content">
+                <h3>Configurar Guardia</h3>
+                <div class="input-group">
+                    <label for="input-end">Fin de la Guardia:</label>
+                    <input type="datetime-local" id="input-end">
+                </div>
+                <div class="settings-actions">
+                    <button id="btn-save" class="btn btn-primary">Guardar</button>
+                    <button id="btn-reset" class="btn btn-secondary">Por Defecto</button>
+                    <button id="btn-close" class="btn btn-text">Cerrar</button>
+                </div>
+                <p class="settings-tip">💡 Introduce cuándo termina la guardia de 24h. El inicio se calculará automáticamente 24h antes. También puedes pasarlo por URL (ej: <code>?end=2026-07-20T08:00</code>)</p>
+            </div>
+        </div>
+
+
+        <!-- Main Card -->
+        <section class="card">
+            <div class="card-header">
+                <div class="logo-container">
+                    <svg class="heart-pulse-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                    </svg>
+                </div>
+                <h1>Ánimo, mi enfermera favorita ❤️</h1>
+                <p class="subtitle">Control de tiempo de tu guardia de 24 horas</p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-header">
+                    <span id="progress-percent">0% Completado</span>
+                    <span id="progress-text">Guardia activa</span>
+                </div>
+                <div class="progress-bar-wrapper">
+                    <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
+                    <div id="progress-heart" class="progress-heart" style="left: 0%">❤️</div>
+                </div>
+            </div>
+
+            <!-- Countdown Grid -->
+            <div class="countdown-grid">
+                <div class="countdown-item">
+                    <span id="hours" class="countdown-value">00</span>
+                    <span class="countdown-label">Horas</span>
+                </div>
+                <div class="countdown-colon">:</div>
+                <div class="countdown-item">
+                    <span id="minutes" class="countdown-value">00</span>
+                    <span class="countdown-label">Minutos</span>
+                </div>
+                <div class="countdown-colon">:</div>
+                <div class="countdown-item">
+                    <span id="seconds" class="countdown-value">00</span>
+                    <span class="countdown-label">Segundos</span>
+                </div>
+            </div>
+
+            <!-- Motivation Message -->
+            <div class="message-card">
+                <div class="message-icon" id="message-emoji">🩺</div>
+                <p id="motivational-message" class="message-text">Cargando tu guardia...</p>
+            </div>
+
+            <!-- Time Info Footer -->
+            <div class="card-footer">
+                <div class="time-block">
+                    <span class="time-label">Empieza</span>
+                    <span id="display-start" class="time-value">--/-- --:--</span>
+                </div>
+                <div class="footer-divider"></div>
+                <div class="time-block">
+                    <span class="time-label">Termina</span>
+                    <span id="display-end" class="time-value">--/-- --:--</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
