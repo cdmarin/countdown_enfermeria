@@ -544,6 +544,45 @@ body {
     line-height: 1.4;
 }
 
+/* Finished Badge Styles */
+.countdown-grid.hidden {
+    display: none !important;
+}
+
+.finished-badge {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    font-family: var(--font-head);
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    font-weight: 800;
+    padding: 22px 15px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 10px 25px rgba(244, 63, 94, 0.25);
+    animation: badgePulse 2.5s infinite ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.finished-badge.hidden {
+    display: none !important;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 10px 25px rgba(244, 63, 94, 0.25);
+    }
+    50% {
+        transform: scale(1.04);
+        box-shadow: 0 15px 35px rgba(244, 63, 94, 0.45);
+    }
+}
+
 /* Responsiveness Details */
 @media (max-width: 480px) {
     body {

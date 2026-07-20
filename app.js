@@ -142,6 +142,8 @@ const PHRASES = [
 const hoursEl = document.getElementById('hours');
 const minutesEl = document.getElementById('minutes');
 const secondsEl = document.getElementById('seconds');
+const countdownGridEl = document.getElementById('countdown-grid');
+const finishedBadgeEl = document.getElementById('finished-badge');
 
 const progressPercentEl = document.getElementById('progress-percent');
 const progressTextEl = document.getElementById('progress-text');
@@ -235,6 +237,9 @@ function updateCountdown() {
     
     // Si la guardia no ha empezado aún
     if (now < startTime) {
+        countdownGridEl.classList.remove('hidden');
+        finishedBadgeEl.classList.add('hidden');
+
         hoursEl.textContent = "00";
         minutesEl.textContent = "00";
         secondsEl.textContent = "00";
@@ -251,10 +256,9 @@ function updateCountdown() {
 
     // Si la guardia ya ha terminado
     if (now >= endTime) {
-        hoursEl.textContent = "00";
-        minutesEl.textContent = "00";
-        secondsEl.textContent = "00";
-        
+        countdownGridEl.classList.add('hidden');
+        finishedBadgeEl.classList.remove('hidden');
+
         progressBarEl.style.width = "100%";
         progressHeartEl.style.left = "100%";
         progressPercentEl.textContent = "100% Completado";
@@ -278,6 +282,9 @@ function updateCountdown() {
     }
 
     // Guardia en progreso
+    countdownGridEl.classList.remove('hidden');
+    finishedBadgeEl.classList.add('hidden');
+
     const totalDuration = endTime - startTime;
     const elapsed = now - startTime;
     const progressPercent = Math.min((elapsed / totalDuration) * 100, 100);
