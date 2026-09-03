@@ -5,9 +5,9 @@
  * por defecto en formato ISO: YYYY-MM-DDTHH:MM:SS
  * El inicio de la guardia se calculará automáticamente 24 horas antes.
  */
-const DEFAULT_END   = "2026-07-20T08:00:00";
+const DEFAULT_END   = "2026-09-05T08:00:00";
 
-// Banco de frases motivacionales de enfermería (15 opciones por cada rango de 4 horas y fin de guardia)
+// Banco de frases motivacionales de enfermería (25 opciones por cada rango de 4 horas y fin de guardia)
 const PHRASES = [
     // Bloque 1: Horas 0 a 4 (Inicio de la Guardia)
     [
@@ -25,7 +25,17 @@ const PHRASES = [
         { text: "El primer café de la guardia sabe a superación. ¡Tú puedes con todo! ☕💪", emoji: "☕" },
         { text: "¡A por el día con fuerza! La mejor enfermera ya está en su puesto. 🩺🥇", emoji: "🩺" },
         { text: "Con tu empatía y tu profesionalidad, esta guardia será pan comido. 🍞🏥", emoji: "🍞" },
-        { text: "Que el turno empiece suave y siga igual de bonito. ¡Mucho ánimo, mi amor! 💕✨", emoji: "💕" }
+        { text: "Que el turno empiece suave y siga igual de bonito. ¡Mucho ánimo, mi amor! 💕✨", emoji: "💕" },
+        { text: "Uniforme impecable, zuecos cómodos y corazón listo para darlo todo. 👟💖", emoji: "👟" },
+        { text: "Primeras medicaciones organizadas con la precisión de una experta. ¡Grande! 💊✨", emoji: "💊" },
+        { text: "Que la tranquilidad reine en planta durante estas primeras horas. 🕊️🏥", emoji: "🕊️" },
+        { text: "Cada inicio de guardia es una nueva oportunidad para marcar la diferencia. 🌟🩺", emoji: "🌟" },
+        { text: "¡Primer relevo completado con éxito! Ahora a llevar el timón con orgullo. ⚓👩‍⚕️", emoji: "👩‍⚕️" },
+        { text: "Tu vocación ilumina todo el servicio desde el minuto uno. ¡A por todas! 💡❤️", emoji: "💡" },
+        { text: "Carro de curas preparado y mente enfocada. ¡Nadie lo hace mejor que tú! 🛒🩹", emoji: "🛒" },
+        { text: "Inicias el turno con la mejor actitud y esa calidez tan tuya. ¡Mucho éxito! 🌻🩺", emoji: "🌻" },
+        { text: "Confía en tu enorme talento; estas primeras 4 horas pasarán volando. ⏳💫", emoji: "⏳" },
+        { text: "¡Bienvenida a la guardia! Eres el ángel de la guarda de cada paciente hoy. 👼🏥", emoji: "👼" }
     ],
     // Bloque 2: Horas 4 a 8 (Mañana/Tarde - Avance)
     [
@@ -43,7 +53,17 @@ const PHRASES = [
         { text: "¡Un pasito más dado! Tu esfuerzo de hoy vale oro. 🥇✨", emoji: "🥇" },
         { text: "El turno sigue su curso, pero con tu actitud todo es más fácil. 😎🏥", emoji: "😎" },
         { text: "Recuerda que cada hora que pasa es una hora menos para volver a casa. 🏠❤️", emoji: "🏠" },
-        { text: "Sigue repartiendo esa magia que tienes para cuidar a los demás. 🩺🪄", emoji: "🪄" }
+        { text: "Sigue repartiendo esa magia que tienes para cuidar a los demás. 🩺🪄", emoji: "🪄" },
+        { text: "Canalizando vías como una auténtica maestra. ¡No hay vena difícil para ti! 🎯💉", emoji: "🎯" },
+        { text: "Tus palabras tranquilizan tanto como tus cuidados. ¡Qué orgullo verte trabajar! 🗣️🌸", emoji: "🌸" },
+        { text: "El ajetreo de la mañana no puede contigo: tu serenidad es contagiosa. 🧘‍♀️🏥", emoji: "🧘‍♀️" },
+        { text: "Poco a poco sumando horas de gran labor. ¡Eres pura entrega y cariño! ⏱️❤️", emoji: "⏱️" },
+        { text: "Sueros colgados, tratamientos al día y tú impecable en cada detalle. 💧📋", emoji: "📋" },
+        { text: "Tómate un respiro entre paciente y paciente, te mereces ese pequeño sorbo de café. ☕🌿", emoji: "☕" },
+        { text: "Los pasillos del hospital se llenan de calma cuando tú estás de turno. 🕊️✨", emoji: "🕊️" },
+        { text: "Tu rapidez resolviendo imprevistos es digna de admiración. ¡Sigue brillando! ⚡🩺", emoji: "⚡" },
+        { text: "Avanzando con paso firme y seguro hacia la mitad del camino. ¡Bravo! 🐾💪", emoji: "🐾" },
+        { text: "La ternura con la que tratas a cada persona hace del mundo un lugar mejor. 🌺🤗", emoji: "🌺" }
     ],
     // Bloque 3: Horas 8 a 12 (Tarde - Ecuador)
     [
@@ -61,7 +81,17 @@ const PHRASES = [
         { text: "Un café rápido para celebrar que ya va quedando menos. ☕🍰", emoji: "☕" },
         { text: "Mitad hecha, mitad por delante. ¡Tú puedes con la segunda parte sin despeinarte! 💁‍♀️🩺", emoji: "💁‍♀️" },
         { text: "¡La cima de la guardia ya ha sido conquistada! Ahora toca bajar. ⛰️🚶‍♀️", emoji: "⛰️" },
-        { text: "Que la energía no decaiga en esta tarde de hospital. ¡Ánimo, bonita! 💪🏥", emoji: "💪" }
+        { text: "Que la energía no decaiga en esta tarde de hospital. ¡Ánimo, bonita! 💪🏥", emoji: "💪" },
+        { text: "¡12 horas en el bolsillo! La mitad más dura ya ha quedado atrás. 🎒🎉", emoji: "🎒" },
+        { text: "No olvides sentarte unos minutos a comer bien y desconectar la mente. 🥗🥪", emoji: "🥗" },
+        { text: "El ecuador de la guardia superado con honores. ¡Qué profesionalidad la tuya! 🎖️👏", emoji: "🎖️" },
+        { text: "A partir de aquí, cada minuto que pasa te acerca a tu merecido descanso. ⏳🏡", emoji: "🏡" },
+        { text: "Tu sonrisa sigue intacta tras horas de intenso trabajo. ¡Eres admirable! 😊💖", emoji: "😊" },
+        { text: "Si el cansancio asoma, piensa en lo mucho que estás ayudando hoy. 🌻🩺", emoji: "🌻" },
+        { text: "Recarga tu botella de agua y estira la espalda; te estás ganando el cielo. 💧🤸‍♀️", emoji: "🤸‍♀️" },
+        { text: "Tarde productiva y llena de cuidados impecables. ¡Orgullo total! 🌟📋", emoji: "🌟" },
+        { text: "Media guardia completada: el marcador ya corre a tu favor. ⏱️🏃‍♀️", emoji: "⏱️" },
+        { text: "¡Cuesta abajo desde ahora! La segunda parte será más rápida y liviana. 🛷✨", emoji: "🛷" }
     ],
     // Bloque 4: Horas 12 a 16 (Tarde/Noche)
     [
@@ -76,15 +106,25 @@ const PHRASES = [
         { text: "Una ronda más y ya quedará menos para cerrar el día. 🚶‍♀️📝", emoji: "🚶‍♀️" },
         { text: "Tu fuerza en el turno nocturno es admirable. ¡Mucho ánimo, valiente! 💪🌌", emoji: "💪" },
         { text: "La luna te acompaña en tus rondas nocturnas. 🌙🏥", emoji: "🌙" },
-        { text: "Que los pacientes duerman plácidamente y te dejen descansar un ratito. 🛌  ", emoji: "🛌" },
+        { text: "Que los pacientes duerman plácidamente y te dejen descansar un ratito. 🛌", emoji: "🛌" },
         { text: "¡Entrando en el terreno de la noche! Que fluya el café en vena. ☕💉", emoji: "☕" },
         { text: "Ya has superado más del 60% de la guardia. ¡El final se empieza a ver! 👀✨", emoji: "👀" },
-        { text: "¡Mucho ánimo con el cambio de turno y la noche! Te mando mi amor. ❤️🌙", emoji: "❤️" }
+        { text: "¡Mucho ánimo con el cambio de turno y la noche! Te mando mi amor. ❤️🌙", emoji: "❤️" },
+        { text: "La noche llega y tus cuidados siguen siendo el mejor refugio para todos. 🌃🛡️", emoji: "🌃" },
+        { text: "Poco a poco la planta se va calmando. ¡Que disfrutes de momentos de paz! 🤫🕊️", emoji: "🕊️" },
+        { text: "Más de 14 horas de entrega absoluta. ¡Tu fortaleza no tiene límites! 💥💪", emoji: "💥" },
+        { text: "Un té caliente o una infusión para templar el cuerpo en esta noche. 🫖🍵", emoji: "🫖" },
+        { text: "Silencio en los controles y medicaciones de noche bien pautadas. ¡Gran trabajo! 🌙💊", emoji: "💊" },
+        { text: "La cuenta atrás ya está muy avanzada. ¡Solo queda el último tramo de la noche! ⏳✨", emoji: "⏳" },
+        { text: "Cuidando en la sombra mientras el mundo duerme; labor de verdaderas heroínas. 🦸‍♀️🌌", emoji: "🦸‍♀️" },
+        { text: "Mantén ese buen humor que te caracteriza incluso con sueño. ¡Te adoro! 😄❤️", emoji: "😄" },
+        { text: "Revisión de constantes nocturnas superada sin problemas. ¡Todo bajo control! 📋🩺", emoji: "📋" },
+        { text: "La noche se hace más corta cuando se trabaja con tanto amor como tú. 🕯️💫", emoji: "🕯️" }
     ],
     // Bloque 5: Horas 16 a 20 (Madrugada)
     [
         { text: "Las horas más duras de la madrugada están aquí. ¡Tú puedes con esto y más! 🌌💪", emoji: "🌌" },
-        { text: "Si el sueño aprieta, cierra los ojos y piensa en lo cómoda que estará tu cama. 🛌  ", emoji: "🛌" },
+        { text: "Si el sueño aprieta, cierra los ojos y piensa en lo cómoda que estará tu cama. 🛌", emoji: "🛌" },
         { text: "Falta muy poco para ver amanecer. ¡Eres una campeona incansable! 🌅🧸", emoji: "🌅" },
         { text: "La noche avanza y el amanecer está a la vuelta de la esquina. ¡Fuerza! 🩺🌙", emoji: "🩺" },
         { text: "Mantén la guardia alta en estas horas tranquilas. ¡Ya casi se ve la luz del día! 🌟🏥", emoji: "🌟" },
@@ -97,7 +137,17 @@ const PHRASES = [
         { text: "Faltan pocas horas para el relevo. ¡Ya casi rozamos el final! 🤏✨", emoji: "🤏" },
         { text: "Un último esfuerzo en esta madrugada. ¡Estás muy cerca! 💪🌌", emoji: "💪" },
         { text: "Que esta madrugada sea lo más tranquila posible para que puedas descansar algo. 🛌🤫", emoji: "🛌" },
-        { text: "Las estrellas brillan y tú en el control de enfermería dando lo mejor. ✨🩺", emoji: "✨" }
+        { text: "Las estrellas brillan y tú en el control de enfermería dando lo mejor. ✨🩺", emoji: "✨" },
+        { text: "Aguanta ese bostezo, campeona: ¡las horas más oscuras ya están pasando! 🥱⭐", emoji: "⭐" },
+        { text: "El reloj no se detiene y cada tic-tac te acerca al ansiado amanecer. ⏰🌅", emoji: "⏰" },
+        { text: "Una pequeña caminata por el pasillo y un vaso de agua fresca para despejarte. 🚶‍♀️💧", emoji: "💧" },
+        { text: "¡Superando la barrera del sueño como una auténtica espartana! 🛡️😴", emoji: "🛡️" },
+        { text: "Pronto empezarán a clarear los primeros rayos de sol. ¡Falta poquísimo! 🌤️✨", emoji: "🌤️" },
+        { text: "El esfuerzo de esta madrugada tendrá su recompensa en un descanso glorioso. 🛌👑", emoji: "👑" },
+        { text: "Casi 18 horas superadas. ¡Estás demostrando una resistencia sobrehumana! 🦾🔥", emoji: "🦾" },
+        { text: "Visualiza el momento de quitarte los zuecos al llegar a casa... ¡qué delicia! 👟💆‍♀️", emoji: "💆‍♀️" },
+        { text: "La calma de las 4 de la mañana te arropa. ¡Ya queda nada para el nuevo día! 🌌🕊️", emoji: "🌌" },
+        { text: "Tu vocación es más fuerte que cualquier noche sin dormir. ¡Mucho ánimo! 💖🩺", emoji: "💖" }
     ],
     // Bloque 6: Horas 20 a 24 (Último Tirón)
     [
@@ -115,7 +165,17 @@ const PHRASES = [
         { text: "Tu cama está llamándote y el despertador ya se apaga. 🛌😴", emoji: "🛌" },
         { text: "El último esfuerzo del turno de mañana. ¡Casi en casita! 🏠💖", emoji: "🏠" },
         { text: "¡Última hora! Pasa el relevo con alegría y a descansar. 👋🏥", emoji: "👋" },
-        { text: "¡Se acabó el turno! Enhorabuena por otra guardia superada como una campeona. 🏆🎉🛌", emoji: "🏆" }
+        { text: "¡Se acabó el turno! Enhorabuena por otra guardia superada como una campeona. 🏆🎉🛌", emoji: "🏆" },
+        { text: "¡El sol ya brilla con fuerza! Las 24 horas están a punto de culminar. 🌞🎈", emoji: "🌞" },
+        { text: "Ordena los apósitos, cierra evolutivos y saborea este final de guardia. 📂🩺", emoji: "📂" },
+        { text: "¡A solo un paso de la línea de meta! Has hecho un trabajo colosal hoy. 🏁🌟", emoji: "🏁" },
+        { text: "El relevo de la mañana está llegando con sus caras descansadas. ¡Te toca salir! 🚪👋", emoji: "🚪" },
+        { text: "Últimas analíticas entregadas y parte de guardia redactado. ¡Impecable! 📑💉", emoji: "📑" },
+        { text: "Siente el alivio de haber cuidado tan bien a todos tus pacientes. ¡Eres única! 💐❤️", emoji: "💐" },
+        { text: "¡Cuestión de minutos! Guarda tus tijeras y tu esparadrapo en el bolsillo. ✂️🩹", emoji: "✂️" },
+        { text: "La satisfacción del deber cumplido tras 24h intensas no te la quita nadie. 🥇✨", emoji: "🥇" },
+        { text: "Vete despidiendo de los compañeros; tu merecido descanso comienza ya. 🤝🥰", emoji: "🤝" },
+        { text: "¡Últimos segundos de guardia! Gracias de corazón por darlo todo. ⏳💖", emoji: "⏳" }
     ],
     // Bloque 7: Guardia Terminada (Hora 24+)
     [
@@ -133,7 +193,17 @@ const PHRASES = [
         { text: "¡Libertad! Gracias por cuidar de todos, ahora te toca descansar a ti. ❤️🛌", emoji: "❤️" },
         { text: "El hospital queda atrás. ¡Por fin a casita a desconectar! 🏠💤", emoji: "🏠" },
         { text: "Tu cama y yo te estábamos esperando. ¡A descansar, preciosa! 🛌💖", emoji: "🛌" },
-        { text: "¡Se acabó el turno! Enhorabuena por otra guardia superada como una campeona. 🏆🎉🛌", emoji: "🏆" }
+        { text: "¡Bravo, campeona! Tu esfuerzo de 24 horas ha dejado huella. ¡A disfrutar del descanso! 🏆🎉🛌", emoji: "🏆" },
+        { text: "¡Zuecos fuera, persianas bajadas y silencio absoluto! Dulces sueños. 👡🛏️", emoji: "🛏️" },
+        { text: "Has cuidado de todos con el alma, ahora permíteme cuidarte a ti. Te quiero. 💆‍♀️❤️", emoji: "❤️" },
+        { text: "Fin del servicio: modo avión activado para cuerpo y mente. ✈️📴", emoji: "📴" },
+        { text: "Un desayuno de campeones y directita bajo el edredón. ¡Te lo has ganado con creces! ☕🥐", emoji: "🥐" },
+        { text: "¡Objetivo 24h logrado! Eres la mejor enfermera y la persona más fuerte que conozco. 🌟🥇", emoji: "🌟" },
+        { text: "Que sueñes bonito y descanses profundo; tu trabajo de hoy ha sido impecable. 🌙🧸", emoji: "🧸" },
+        { text: "Ni timbres, ni alarmas de bombas de infusión: solo paz y descanso merecido. 🔕💤", emoji: "🔕" },
+        { text: "¡Guardia histórica superada! Gracias por tu infinita entrega y ternura. 🕊️💐", emoji: "💐" },
+        { text: "Dormir sin alarma es el mejor premio tras 24 horas cuidando vidas. ⏰❌", emoji: "😴" },
+        { text: "¡Orgullo infinito de ti! Cierra los ojos y descansa todo lo que tu cuerpo pida. 👑🛌", emoji: "👑" }
     ]
 ];
 
