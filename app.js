@@ -5,7 +5,7 @@
  * por defecto en formato ISO: YYYY-MM-DDTHH:MM:SS
  * El inicio de la guardia se calculará automáticamente 24 horas antes.
  */
-const DEFAULT_END   = "2026-09-05T08:00:00";
+const DEFAULT_END   = "2026-09-11T08:00:00";
 
 // Banco de frases motivacionales de enfermería (25 opciones por cada rango de 4 horas y fin de guardia)
 const PHRASES = [
